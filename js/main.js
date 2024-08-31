@@ -28,6 +28,8 @@
     });
 
 
+
+
     // Typed Initiate
     if ($('.typed-text-output').length == 1) {
         var typed_strings = $('.typed-text').text();
@@ -115,3 +117,28 @@
     
 })(jQuery);
 
+function emailSend(){
+
+    var userName = document.getElementById("name").Value;
+    var email = document.getElementById("email").Value;
+
+    var messageBody = "Name " + userName + email;
+    Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "wanjiruasha96@gmail.com",
+        Password : "1773B9D0DEF7D0DDA282B44E516D57536254",
+        To : 'wanjiruasha96@gmail.com',
+        From : "wanjiruasha96@gmail.com",
+        Subject : "This is the subject",
+        Body : messageBody
+    }).then(
+      message => {
+        if(message == 'OK'){
+            swal("Thanks for reaching out", "You clicked the button!", "success");
+        }
+        else{
+            swal("error", "You clicked the button!", "error")
+        }
+      }
+    );
+}
